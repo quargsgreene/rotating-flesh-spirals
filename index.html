@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<head>
+    <title>Cherry Pie Installation 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container" id="temp">
+        <button id="start" class="container">Wee!</button>
+    </div>
+    <canvas id="c"></canvas>
+
+    <audio id= "full" preload="auto" class = "audio">
+        <source src= "sounds/05272021 Implicit Bias Cherry Pie Reference.wav" type="audio/wav">
+    </audio>
+    <audio id="viola" preload="auto" class = "audio">
+        <source src="sounds/Viola 1_1.wav" type="audio/wav">
+    </audio>
+    <audio id="synth" class = "audio">
+        <source src="sounds/Inst 8_1.wav" type="audio/wav">
+    </audio>
+    <audio id="percussion1" preload="auto" class= "audio">
+        <source src="sounds/Percussion 1_1.wav" type="audio/wav">
+    </audio>
+    <audio id="percussion2" preload="auto" class= "audio">
+        <source src="sounds/Percussion 2_1.wav" type="audio/wav">
+    </audio>
+</body>
+<style>
+html, body {
+    background-image:url("images/bg.jpg") ;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%; 
+}
+
+div{
+    width: 100%;
+    height: 100%;
+}
+
+
+#c{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+h1{
+    font-family: "Monaco";
+    color: rgb(199, 129, 0);
+    
+}
+
+h2{
+    font-family: "Monaco";
+    color:rgb(97, 255, 139);
+}
+
+.container button{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    border: 2px outset black;
+    font-family: "Monaco";
+    padding: 3px;
+}
+
+audio{
+    display: none;
+}
+
+.invisible{
+    opacity: 0;
+    font-size: 1px;
+}
+
+.container {
+    position:absolute;
+}
+
+.container img{
+    width:100%;
+    height: auto;
+}
+
+</style>
+<script type="module" src="sketch.js"></script>
+</html>
