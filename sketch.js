@@ -13,7 +13,7 @@ function main (){
     const canvas = document.querySelector('#c');
     const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
     const scene = new THREE.Scene();
-    
+
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor(0xe4f5e8);
 
@@ -51,17 +51,17 @@ function main (){
           super();
           this.scale = scale;
         }
-    
+
         getPoint(t, optionalTarget = new THREE.Vector3()){
-    
+
           const tx = Math.cos(5 * Math.PI * t);
           const ty = 2 * t;
           const tz = Math.sin(5 * Math.PI * t);
-    
+
           return optionalTarget.set(tx, ty, tz).multiplyScalar(this.scale);
         }
       }
-    
+
     const fleshSpirals = [];
     const blobs = [];
     const dice = [];
@@ -133,7 +133,7 @@ function main (){
         jerky.scale.x = size;
         jerky.scale.y = size;
         jerky.scale.z = size;
-        
+
         jerky.position.x = 10;
         jerky.position.y = -7;
         jerky.position.z = 11;
@@ -143,7 +143,7 @@ function main (){
         scene.add(jerky);
         const jerkySynthSound = new THREE.PositionalAudio(soundListener);
         const jerkySynthStemElement = document.getElementById('synth');
-        jerkySynthSound.setMediaElementSource(jerkySynthStemElement);    
+        jerkySynthSound.setMediaElementSource(jerkySynthStemElement);
         jerkySynthStemElement.play();
         jerky.add(jerkySynthSound);
 
@@ -151,8 +151,8 @@ function main (){
     });
 
 
-    
-    
+
+
 
       for(let i = 0; i < 3; i++){
           for(let j = 0; j<3; j++){
@@ -241,12 +241,6 @@ function main (){
     blobPercussionSound1.setMediaElementSource(blobPercussionStemElement1);
     blobPercussionStemElement1.play();
     blobs[0].add(blobPercussionSound1);
-
-    const blobPercussionSound2 = new THREE.PositionalAudio(soundListener);
-    const blobPercussionStemElement2 = document.getElementById('percussion2');
-    blobPercussionSound2.setMediaElementSource(blobPercussionStemElement2);
-    blobPercussionStemElement2.play();
-    blobs[4].add(blobPercussionSound2);
 
 
     renderer.render(scene,camera);
