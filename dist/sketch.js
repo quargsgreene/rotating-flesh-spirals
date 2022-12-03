@@ -76,9 +76,9 @@ function main() {
   const blackBoxWidth = 0.5;
   const blackBoxHeight = 10;
   const blackBoxDepth = 0.5;
-  const blackBoxGeometry = new THREE.BoxGeometry(blackBoxWidth, blackBoxHeight, blackBoxDepth);
+  const blackBoxBufferGeometry = new THREE.BoxBufferGeometry(blackBoxWidth, blackBoxHeight, blackBoxDepth);
   const blackBoxMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
-  const blackBox = new THREE.Mesh(blackBoxGeometry, blackBoxMaterial);
+  const blackBox = new THREE.Mesh(blackBoxBufferGeometry, blackBoxMaterial);
   blackBox.position.set(-10, -10, 10);
   scene.add(blackBox);
 
@@ -95,9 +95,9 @@ function main() {
     texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
     texture.minFilter = THREE.LinearFilter;
   });
-  const fleshBoxGeometry = new THREE.BoxGeometry(fleshBoxWidth, fleshBoxHeight, fleshBoxDepth);
+  const fleshBoxBufferGeometry = new THREE.BoxBufferGeometry(fleshBoxWidth, fleshBoxHeight, fleshBoxDepth);
   const fleshBoxMaterial = new THREE.MeshBasicMaterial({ map: fleshBoxTexture });
-  const fleshBox = new THREE.Mesh(fleshBoxGeometry, fleshBoxMaterial);
+  const fleshBox = new THREE.Mesh(fleshBoxBufferGeometry, fleshBoxMaterial);
   fleshBox.position.set(10, -8, -9);
   scene.add(fleshBox);
 
@@ -114,9 +114,9 @@ function main() {
     texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
     texture.minFilter = THREE.LinearFilter;
   });
-  const chaosBoxGeometry = new THREE.BoxGeometry(chaosBoxWidth, chaosBoxHeight, chaosBoxDepth);
+  const chaosBoxBufferGeometry = new THREE.BoxBufferGeometry(chaosBoxWidth, chaosBoxHeight, chaosBoxDepth);
   const chaosBoxMaterial = new THREE.MeshBasicMaterial({ map: chaosBoxTexture });
-  const chaosBox = new THREE.Mesh(chaosBoxGeometry, chaosBoxMaterial);
+  const chaosBox = new THREE.Mesh(chaosBoxBufferGeometry, chaosBoxMaterial);
   chaosBox.position.set(-10, -2, -10);
   scene.add(chaosBox);
 
@@ -158,13 +158,13 @@ function main() {
       const fleshSpiralSegments = 100;
       const fleshSpiralRadius = 0.4;
       const fleshSpiralRadialSegments = 20;
-      const fleshSpiralGeometry = new THREE.TubeGeometry(path, fleshSpiralSegments, fleshSpiralRadius, fleshSpiralRadialSegments, false);
+      const fleshSpiralBufferGeometry = new THREE.TubeBufferGeometry(path, fleshSpiralSegments, fleshSpiralRadius, fleshSpiralRadialSegments, false);
       const fleshSpiralTexture = loader.load('images/fleshSpiralTexture.jpg', (texture) => {
         texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
         texture.minFilter = THREE.LinearFilter;
       });
       const fleshSpiralMaterial = new THREE.MeshPhongMaterial({ map: fleshSpiralTexture });
-      const fleshSpiral = new THREE.Mesh(fleshSpiralGeometry, fleshSpiralMaterial);
+      const fleshSpiral = new THREE.Mesh(fleshSpiralBufferGeometry, fleshSpiralMaterial);
       fleshSpiral.position.x = 5 * (i - 1);
       fleshSpiral.position.z = 5 * (j - 1);
       scene.add(fleshSpiral);
@@ -177,8 +177,8 @@ function main() {
       const p = 3;
       const q = 5;
       const blobMaterial = new THREE.MeshPhongMaterial({ color: 0x570603 });
-      const blobGeometry = new THREE.TorusKnotGeometry(blobTorusRadius, blobTubularRadius, blobRadialSegments, blobTubularSegments, p, q);
-      const blob = new THREE.Mesh(blobGeometry, blobMaterial);
+      const blobBufferGeometry = new THREE.TorusKnotBufferGeometry(blobTorusRadius, blobTubularRadius, blobRadialSegments, blobTubularSegments, p, q);
+      const blob = new THREE.Mesh(blobBufferGeometry, blobMaterial);
       blob.rotation.x = (45 * Math.PI) / 180;
       blob.position.x = 5 * (i - 1);
       blob.position.y = -2;
@@ -194,8 +194,8 @@ function main() {
         texture.minFilter = THREE.LinearFilter;
       });
       const dieMaterial = new THREE.MeshPhongMaterial({ map: dieTexture });
-      const dieGeometry = new THREE.SphereGeometry(dieRadius, dieWidthSegments, dieHeightSegments);
-      const die = new THREE.Mesh(dieGeometry, dieMaterial);
+      const dieBufferGeometry = new THREE.SphereBufferGeometry(dieRadius, dieWidthSegments, dieHeightSegments);
+      const die = new THREE.Mesh(dieBufferGeometry, dieMaterial);
       die.position.x = 5 * (i - 1);
       die.position.y = -6;
       die.position.z = 5 * (j - 1);
@@ -207,8 +207,8 @@ function main() {
         const pyramidHeight = 4;
         const pyramidRadialSegments = 3 + (2 * (i + j));
         const pyramidMaterial = new THREE.MeshPhongMaterial({ color: 0xf0d943, shininess: 100 });
-        const pyramidGeometry = new THREE.ConeGeometry(pyramidRadius, pyramidHeight, pyramidRadialSegments);
-        const pyramid = new THREE.Mesh(pyramidGeometry, pyramidMaterial);
+        const pyramidBufferGeometry = new THREE.ConeBufferGeometry(pyramidRadius, pyramidHeight, pyramidRadialSegments);
+        const pyramid = new THREE.Mesh(pyramidBufferGeometry, pyramidMaterial);
         pyramid.position.x = 2.5 * (i - 1);
         pyramid.position.y = 6;
         pyramid.position.z = 2.5 * (j - 1);
@@ -220,8 +220,8 @@ function main() {
         const ringRadialSegments = 30;
         const ringTubularSegments = 200;
         const ringMaterial = new THREE.MeshPhongMaterial({ color: 0x4a376d });
-        const ringGeometry = new THREE.TorusGeometry(ringRadius, ringTubeRadius, ringRadialSegments, ringTubularSegments);
-        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        const ringBufferGeometry = new THREE.TorusBufferGeometry(ringRadius, ringTubeRadius, ringRadialSegments, ringTubularSegments);
+        const ring = new THREE.Mesh(ringBufferGeometry, ringMaterial);
         ring.rotation.x = (90 * Math.PI) / 180;
         ring.position.x = 10 * (i - 1);
         ring.position.y = -9;
